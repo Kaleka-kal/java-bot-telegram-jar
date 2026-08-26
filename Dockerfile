@@ -9,7 +9,6 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-docker build --progress=plain
 # Railway автоматически назначает порт через переменную среды PORT
 ENV PORT=8080
 EXPOSE ${PORT}
